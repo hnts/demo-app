@@ -1,0 +1,18 @@
+apiVersion: polling.tekton.dev/v1alpha1
+kind: Repository
+metadata:
+  name: demo-app-repository
+  namespace: tekton-polling-operator
+spec:
+  url: https://github.com/hnts/demo-app.git
+  ref: main
+  frequency: 5m
+  type: github
+  pipelineRef:
+    name: ci-pipeline
+    namespace: tekton-pipelines
+    params:
+    - name: gitRevision
+      expression: commit.sha
+    - name: repoURL
+      expression: repoURL
