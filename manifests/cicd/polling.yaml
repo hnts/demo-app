@@ -6,7 +6,7 @@ metadata:
 spec:
   url: https://github.com/hnts/demo-app.git
   ref: main
-  frequency: 1m
+  frequency: 30s
   type: github
   pipelineRef:
     name: ci-pipeline
