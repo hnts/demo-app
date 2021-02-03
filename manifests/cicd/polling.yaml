@@ -6,7 +6,7 @@ metadata:
 spec:
   url: https://github.com/hnts/demo-app.git
   ref: main
-  frequency: 60s
+  frequency: 30s
   type: github
   pipelineRef:
     name: ci-pipeline
@@ -16,3 +16,7 @@ spec:
       expression: commit.sha
     - name: repoURL
       expression: repoURL
+    workspaces:
+      - name: git-source
+        persistentVolumeClaim:
+          claimName: tekton-volume
