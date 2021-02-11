@@ -6,16 +6,21 @@ metadata:
 spec:
   url: https://github.com/hnts/demo-app.git
   ref: main
-  frequency: 30s
+  frequency: 5m
   type: github
   pipelineRef:
     name: ci-pipeline
     namespace: tekton-pipelines
+    serviceAccountName: pipeline-account
     params:
     - name: gitRevision
       expression: commit.sha
     - name: repoURL
       expression: repoURL
+    - name: pathToContext
+      expression: "'.'"
+    - name: imageUrl
+      expression: "'ghcr.io/hnts/demo-app/demo-app'"
     workspaces:
       - name: git-source
         persistentVolumeClaim:
