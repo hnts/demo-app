@@ -7,7 +7,7 @@ import (
 
 func main() {
 	handler := http.NewServeMux()
-	handler.HandleFunc("/api/hello", Hello)
+	handler.HandleFunc("/", Hello)
 	http.ListenAndServe("0.0.0.0:8080", handler)
 }
 
