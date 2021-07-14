@@ -20,6 +20,6 @@ func Hello(w http.ResponseWriter, r *http.Request) {
 }
 
 func HeavyTask(w http.ResponseWriter, r *http.Request) {
-	time.Sleep(11 * time.Second)
+	time.Sleep(12 * time.Second)
 	fmt.Fprintln(w, "completed heavy task")
 }
