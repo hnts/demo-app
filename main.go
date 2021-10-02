@@ -10,7 +10,7 @@ import (
 func main() {
 	handler := http.NewServeMux()
 	handler.HandleFunc("/", Hello)
-	handler.HandleFunc("/test", HeavyTask)
+	handler.HandleFunc("/heavy", HeavyTask)
 
 	log.Fatal(http.ListenAndServe("0.0.0.0:8080", handler))
 }
@@ -20,6 +20,6 @@ func Hello(w http.ResponseWriter, r *http.Request) {
 }
 
 func HeavyTask(w http.ResponseWriter, r *http.Request) {
-	time.Sleep(11 * time.Second)
+	time.Sleep(5 * time.Second)
 	fmt.Fprintln(w, "completed heavy task")
 }
