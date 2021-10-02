@@ -10,7 +10,7 @@ import (
 func main() {
 	handler := http.NewServeMux()
 	handler.HandleFunc("/", Hello)
-	handler.HandleFunc("/test", HeavyTask)
+	handler.HandleFunc("/heavy", HeavyTask)
 
 	log.Fatal(http.ListenAndServe("0.0.0.0:8080", handler))
 }
