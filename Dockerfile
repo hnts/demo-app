@@ -1,5 +1,8 @@
 FROM golang:1.17.1-alpine AS build
 
+RUN groupadd -r demo-app && useradd -r -g demo-app demo-app
+USER demo-app
+
 WORKDIR /src/
 COPY main.go go.* /src/
 
