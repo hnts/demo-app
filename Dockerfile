@@ -9,7 +9,7 @@ FROM alpine
 COPY --from=build /bin/demo-app /bin/demo-app
 
 RUN addgroup demo-app \
-  && adduser -D -G demo-app demo-app
+  && adduser -D -G demo-app demo-app \
   && chown -R demo-app:demo-app /bin/demo-app
 USER demo-app
 
