@@ -1,6 +1,6 @@
 FROM golang:1.17.1-alpine AS build
 
-RUN groupadd -r demo-app && useradd -r -g demo-app demo-app
+RUN addgroup -r demo-app && adduser -r -g demo-app demo-app
 USER demo-app
 
 WORKDIR /src/
