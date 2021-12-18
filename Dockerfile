@@ -6,6 +6,7 @@ COPY main.go go.* /src/
 RUN CGO_ENABLED=0 go build -o /bin/demo-app
 
 FROM alpine
+RUN apk add curl
 COPY --from=build /bin/demo-app /bin/demo-app
 
 RUN addgroup demo-app \
