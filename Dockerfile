@@ -5,13 +5,8 @@ COPY main.go go.* /src/
 
 RUN CGO_ENABLED=0 go build -o /bin/demo-app
 
-FROM alpine
-RUN apk add curl
+FROM ubuntu
+RUN apt-get update && apt-get install -y curl arp-scan
 COPY --from=build /bin/demo-app /bin/demo-app
-
-RUN addgroup demo-app \
-  && adduser -D -G demo-app demo-app \
-  && chown -R demo-app:demo-app /bin/demo-app
-USER demo-app
 
 ENTRYPOINT ["/bin/demo-app"]
