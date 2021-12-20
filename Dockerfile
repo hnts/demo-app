@@ -6,7 +6,7 @@ COPY main.go go.* /src/
 RUN CGO_ENABLED=0 go build -o /bin/demo-app
 
 FROM ubuntu
-RUN apt-get update && apt-get install -y curl arp-scan
+RUN apt-get update && apt-get install -y curl arp-scan iproute2
 COPY --from=build /bin/demo-app /bin/demo-app
 
 ENTRYPOINT ["/bin/demo-app"]
